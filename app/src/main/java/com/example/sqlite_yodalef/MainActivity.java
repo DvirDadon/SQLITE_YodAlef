@@ -31,13 +31,14 @@ public class MainActivity extends AppCompatActivity {
         Subject=(EditText)findViewById(R.id.Subject);
         Quarter=(EditText)findViewById(R.id.Quarter);
         Grade=(EditText)findViewById(R.id.Grade);
+
         hlp = new HelperDB(this);
-        db=hlp.getWritableDatabase();
+        db = hlp.getWritableDatabase();
         db.close();
     }
 
     public void Data_In(View view) {
-        String student_name=S_Name.getText().toString();
+        String Students=S_Name.getText().toString();
         String address = Address.getText().toString();
         String Phone=S_Phone.getText().toString();
         String HP=HomePhone.getText().toString();
@@ -55,18 +56,14 @@ public class MainActivity extends AppCompatActivity {
          quarter=Integer.parseInt(Q);
 
          ContentValues cv = new ContentValues();
-         cv.put(Student_Info.STUDENT_NAME,student_name);
+         cv.put(Student_Info.STUDENTS,Students);
          cv.put(Student_Info.ADDRESS,address);
          cv.put(Student_Info.STUDENT_PHONE,p);
          cv.put(Student_Info.HOME_PHONE,hp);
          cv.put(Student_Info.PARENT_NAME,Parent_Name);
          cv.put(Student_Info.PARENT_PHONE,p_phone);
-         cv.put(Grades.SUBJECT,S);
-         cv.put(Grades.GRADE,grade);
-         cv.put(Grades.QUARTER,quarter);
-
         db=hlp.getWritableDatabase();
-        db.insert(Grades.TABLE_GRADES, null, cv);
+        db.insert(Student_Info.STUDENTS_TABLE, null, cv);
         db.close();
 
     }
