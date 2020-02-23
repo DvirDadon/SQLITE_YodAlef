@@ -44,16 +44,11 @@ public class MainActivity extends AppCompatActivity {
         String HP=HomePhone.getText().toString();
         String Parent_Name=P_Name.getText().toString();
         String Parent_Phone=P_Phone.getText().toString();
-        String G=Grade.getText().toString();
-        String S=Subject.getText().toString();
-        String Q=Quarter.getText().toString();
-        int p,hp,grade,p_phone,quarter;
+        int p,hp,p_phone;
 
          p=Integer.parseInt(Phone);
          hp=Integer.parseInt(HP);
-         grade= Integer.parseInt(G);
          p_phone=Integer.parseInt(Parent_Phone);
-         quarter=Integer.parseInt(Q);
 
          ContentValues cv = new ContentValues();
          cv.put(Student_Info.STUDENTS,Students);

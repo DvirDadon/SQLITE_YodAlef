@@ -24,11 +24,14 @@ public class Update_Student_Info extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update__student__info);
-        /*lv = findViewById(R.id.lv);
+
+        lv = findViewById(R.id.lv);
+
         hlp = new HelperDB(this);
-        db=hlp.getWritableDatabase();
+        db=hlp.getReadableDatabase();
+
         tb1 = new ArrayList<>();
-        db.query(Student_Info.STUDENTS_TABLE,null,null,null,null,null,null);
+        cr = db.query(Student_Info.STUDENTS_TABLE,null,null,null,null,null,null);
         co11=cr.getColumnIndex(Student_Info.KEY_ID);
         co12=cr.getColumnIndex(Student_Info.STUDENTS);
         co13=cr.getColumnIndex(Student_Info.ADDRESS);
@@ -52,6 +55,6 @@ public class Update_Student_Info extends AppCompatActivity {
         cr.close();
         db.close();
         Adp = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,tb1);
-        lv.setAdapter(Adp);*/
+        lv.setAdapter(Adp);
     }
 }
