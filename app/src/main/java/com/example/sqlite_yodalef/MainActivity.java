@@ -16,21 +16,21 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
     SQLiteDatabase db;
     HelperDB hlp;
-    EditText S_Name,Address,S_Phone,HomePhone,P_Name,P_Phone,Subject,Quarter,Grade;
+    EditText S_Name,Address,S_Phone,HomePhone,M_Name,M_Phone,D_N,D_P,Subject,Quarter,Grade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        S_Name=(EditText)findViewById(R.id.S_Name);
-        Address=(EditText)findViewById(R.id.Address);
-        S_Phone=(EditText)findViewById(R.id.S_Phone);
-        HomePhone=(EditText)findViewById(R.id.HomePhone);
-        P_Name=(EditText)findViewById(R.id.P_Name);
-        P_Phone=(EditText)findViewById(R.id.P_Phone);
-        Subject=(EditText)findViewById(R.id.Subject);
-        Quarter=(EditText)findViewById(R.id.Quarter);
-        Grade=(EditText)findViewById(R.id.Grade);
+        S_Name = (EditText)findViewById(R.id.S_Name);
+        Address = (EditText)findViewById(R.id.Address);
+        S_Phone = (EditText)findViewById(R.id.S_Phone);
+        HomePhone = (EditText)findViewById(R.id.HomePhone);
+        M_Name = (EditText)findViewById(R.id.P_Name);
+        M_Phone = (EditText)findViewById(R.id.P_Phone);
+        Subject = (EditText)findViewById(R.id.Subject);
+        Quarter = (EditText)findViewById(R.id.Quarter);
+        Grade = (EditText)findViewById(R.id.Grade);
 
         hlp = new HelperDB(this);
         db = hlp.getWritableDatabase();
@@ -38,29 +38,49 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Data_In(View view) {
-        String Students=S_Name.getText().toString();
+        String Students = S_Name.getText().toString();
         String address = Address.getText().toString();
-        String Phone=S_Phone.getText().toString();
-        String HP=HomePhone.getText().toString();
-        String Parent_Name=P_Name.getText().toString();
-        String Parent_Phone=P_Phone.getText().toString();
-        int p,hp,p_phone;
+        String Phone = S_Phone.getText().toString();
+        String HP = HomePhone.getText().toString();
+        String Mom_Name = M_Name.getText().toString();
+        String Mom_Phone = M_Phone.getText().toString();
+        int p,hp,m_phone;
 
          p=Integer.parseInt(Phone);
          hp=Integer.parseInt(HP);
-         p_phone=Integer.parseInt(Parent_Phone);
+         m_phone = Integer.parseInt(Mom_Phone);
 
          ContentValues cv = new ContentValues();
          cv.put(Student_Info.STUDENTS,Students);
          cv.put(Student_Info.ADDRESS,address);
          cv.put(Student_Info.STUDENT_PHONE,p);
          cv.put(Student_Info.HOME_PHONE,hp);
-         cv.put(Student_Info.PARENT_NAME,Parent_Name);
-         cv.put(Student_Info.PARENT_PHONE,p_phone);
-        db=hlp.getWritableDatabase();
-        db.insert(Student_Info.STUDENTS_TABLE, null, cv);
-        db.close();
+         cv.put(Student_Info.MOM_NAME,Mom_Name);
+         cv.put(Student_Info.MOM_PHONE,m_phone);
 
+         db = hlp.getWritableDatabase();
+         db.insert(Student_Info.STUDENTS_TABLE, null, cv);
+         db.close();
+
+    }
+
+
+    public void Grades_In(View view) {
+        String sub = Subject.getText().toString();
+        String Quart = Quarter.getText().toString();
+        String grade = Grade.getText().toString();
+
+        int Q =  Integer.parseInt(Quart);
+        int G = Integer.parseInt(grade);
+
+        ContentValues cv = new ContentValues();
+        cv.put(Grades.SUBJECT,sub);
+        cv.put(Grades.QUARTER,Q);
+        cv.put(Grades.GRADE,G);
+
+        db = hlp.getWritableDatabase();
+        db.insert(Grades.TABLE_GRADES,null,cv);
+        db.close();
     }
 
     @Override

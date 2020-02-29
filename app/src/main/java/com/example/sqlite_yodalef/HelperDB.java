@@ -5,14 +5,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import static com.example.sqlite_yodalef.Grades.GRADE;
+import static com.example.sqlite_yodalef.Grades.KEY_ID_G;
 import static com.example.sqlite_yodalef.Grades.QUARTER;
 import static com.example.sqlite_yodalef.Grades.SUBJECT;
 import static com.example.sqlite_yodalef.Grades.TABLE_GRADES;
 import static com.example.sqlite_yodalef.Student_Info.ADDRESS;
 import static com.example.sqlite_yodalef.Student_Info.HOME_PHONE;
 import static com.example.sqlite_yodalef.Student_Info.KEY_ID;
-import static com.example.sqlite_yodalef.Student_Info.PARENT_NAME;
-import static com.example.sqlite_yodalef.Student_Info.PARENT_PHONE;
+import static com.example.sqlite_yodalef.Student_Info.MOM_NAME;
+import static com.example.sqlite_yodalef.Student_Info.MOM_PHONE;
 import static com.example.sqlite_yodalef.Student_Info.STUDENTS;
 import static com.example.sqlite_yodalef.Student_Info.STUDENT_PHONE;
 import static com.example.sqlite_yodalef.Student_Info.STUDENTS_TABLE;
@@ -34,13 +35,13 @@ public class HelperDB extends SQLiteOpenHelper {
         strCreate+=" "+ADDRESS+" TEXT,";
         strCreate+=" "+STUDENT_PHONE+" INTEGER,";
         strCreate+=" "+HOME_PHONE+" INTEGER,";
-        strCreate+=" "+PARENT_NAME+" TEXT,";
-        strCreate+=" "+PARENT_PHONE+" INTEGER";
+        strCreate+=" "+MOM_NAME+" TEXT,";
+        strCreate+=" "+MOM_PHONE+" INTEGER";
         strCreate+=");";
         db.execSQL(strCreate);
 
         strCreate="CREATE TABLE "+TABLE_GRADES;
-        strCreate+=" ("+ KEY_ID+" INTEGER PRIMARY KEY,";
+        strCreate+=" ("+ KEY_ID_G+" INTEGER PRIMARY KEY,";
         strCreate+=" "+SUBJECT+" TEXT,";
         strCreate+=" "+QUARTER+" INTEGER,";
         strCreate+=" "+GRADE+" INTEGER";
