@@ -22,7 +22,7 @@ import static com.example.sqlite_yodalef.Grades.KEY_ID_G;
 import static com.example.sqlite_yodalef.Student_Info.KEY_ID;
 import static com.example.sqlite_yodalef.Student_Info.STUDENTS_TABLE;
 
-public class Update_Student_Info extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class Delete_Student_Info extends AppCompatActivity implements AdapterView.OnItemClickListener{
     AlertDialog.Builder adb;
     SQLiteDatabase db;
     HelperDB hlp;
@@ -32,6 +32,13 @@ public class Update_Student_Info extends AppCompatActivity implements AdapterVie
     ArrayList<String> tb2 = new ArrayList<>();
     ArrayAdapter Adp,Adp2;
     int co11,co12,co13,co14,co15,co16,co17,co20,co21,co22,co23;
+
+    /**
+     * @author Dvir Dadon
+     * @Version 3.6.1
+     * @since Unknown
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +105,14 @@ public class Update_Student_Info extends AppCompatActivity implements AdapterVie
         lv.setAdapter(Adp);
     }
 
-
+    /**
+     * @since 28/2/2020
+     * The Method check if the user did a long click if he do AlertDialog pop up and ask him if he want to delete the information he clicked(for each SQlite).
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
         public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
         adb = new AlertDialog.Builder(this);
@@ -129,7 +143,6 @@ public class Update_Student_Info extends AppCompatActivity implements AdapterVie
                 return true;
             }
         });
-
         lvGrades.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
@@ -175,6 +188,11 @@ public class Update_Student_Info extends AppCompatActivity implements AdapterVie
             }
             case (R.id.menuSort): {
                 Intent s = new Intent(this, Sort_Student_Info.class);
+                startActivity(s);
+                break;
+            }
+            case (R.id.Credits): {
+                Intent s = new Intent(this, Credits.class);
                 startActivity(s);
                 break;
             }

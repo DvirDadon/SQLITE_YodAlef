@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Sort_Student_Info"></activity>
-        <activity android:name=".Update_Student_Info" />
+        <activity android:name=".Credits"></activity>
+        <activity android:name=".Sort_Student_Info" />
+        <activity android:name=".Delete_Student_Info" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
